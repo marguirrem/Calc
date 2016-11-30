@@ -3,9 +3,10 @@
     <string name="main.button.submit">Calcular</string>
     <string name="main.hint.bill">Total</string>
     <string name="global.message">Propina %,1.f</string>
-    <string name="main.hint.percentage">Porcentaje</string>
+    <string name="main.hint.percentage">% de Propina</string>
     <string name="main.button.increase">+</string>
     <string name="main.button.decrease">-</string>
     <string name="main.button.clear">Limpiar</string>
+    <string name="main.menu.action.about">Acerca de</string>
 
 </resources>

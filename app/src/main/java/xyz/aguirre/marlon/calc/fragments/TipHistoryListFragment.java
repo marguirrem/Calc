@@ -69,6 +69,6 @@ public class TipHistoryListFragment extends Fragment implements TipHistoryListFr
 
     @Override
     public void OnItemClick(TipRecord tipRecord) {
-        Toast.makeText(getActivity().getApplicationContext(),"ja "+ tipRecord.getDateFormatted(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity().getApplicationContext(),tipRecord.getDateFormatted(), Toast.LENGTH_SHORT).show();
     }
 }

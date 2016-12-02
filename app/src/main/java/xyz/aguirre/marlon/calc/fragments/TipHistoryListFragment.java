@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import xyz.aguirre.marlon.calc.R;
+import xyz.aguirre.marlon.calc.adapters.OnItemClickListener;
 import xyz.aguirre.marlon.calc.adapters.TipAdapter;
 import xyz.aguirre.marlon.calc.models.TipRecord;
 
@@ -23,7 +24,7 @@ import xyz.aguirre.marlon.calc.models.TipRecord;
  * A simple {@link Fragment} subclass.
  */
 
-public class TipHistoryListFragment extends Fragment implements TipHistoryListFragmentListener{
+public class TipHistoryListFragment extends Fragment implements TipHistoryListFragmentListener,OnItemClickListener{
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
 
@@ -47,7 +48,7 @@ public class TipHistoryListFragment extends Fragment implements TipHistoryListFr
 
     private void initAdapter() {
         if(adapter == null){
-            adapter = new TipAdapter(getActivity().getApplicationContext(),new ArrayList<TipRecord>());
+            adapter = new TipAdapter(getActivity().getApplicationContext(),this);
         }
     }
     private void initRecyclerView() {
@@ -66,4 +67,8 @@ public class TipHistoryListFragment extends Fragment implements TipHistoryListFr
     }
 
 
+    @Override
+    public void OnItemClick(TipRecord tipRecord) {
+        Toast.makeText(getActivity().getApplicationContext(),"ja "+ tipRecord.getDateFormatted(), Toast.LENGTH_SHORT).show();
+    }
 }

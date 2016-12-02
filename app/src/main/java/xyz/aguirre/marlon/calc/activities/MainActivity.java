@@ -32,29 +32,14 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.inputBill)
     EditText inputBill;
-    @BindView(R.id.btnSubmit)
-    Button btnSubmit;
+
     @BindView(R.id.inputPercentage)
     EditText inputPercentage;
-    @BindView(R.id.btnIncrease)
-    Button btnIncrease;
-    @BindView(R.id.btnDecrease)
-    Button btnDecrease;
-    @BindView(R.id.btnClear)
-    Button btnClear;
+
+
     @BindView(R.id.txtTip)
     TextView txtTip;
-    /*
-    @BindView(R.id.recyclerView)
-    RecyclerView recyclerView;
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/txtTip" />
-
-    */
     private TipHistoryListFragmentListener fragmentListener;
     private final static int TIP_STEP_CHANGE = 1;
     private final static int DEFAULT_TIP_PERCENTAGE =10;

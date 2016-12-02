@@ -17,6 +17,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Date;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -24,6 +26,7 @@ import xyz.aguirre.marlon.calc.R;
 import xyz.aguirre.marlon.calc.TipCalcApp;
 import xyz.aguirre.marlon.calc.fragments.TipHistoryListFragment;
 import xyz.aguirre.marlon.calc.fragments.TipHistoryListFragmentListener;
+import xyz.aguirre.marlon.calc.models.TipRecord;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -89,10 +92,13 @@ public class MainActivity extends AppCompatActivity {
         if(!strInputTotal.isEmpty()){
             double total = Double.parseDouble(strInputTotal);
             int tipPercentage = getTipPercentege();
-            double tip = total *(tipPercentage/100d);
+            TipRecord tipRecord = new TipRecord();
+            tipRecord.setBill(total);
+            tipRecord.setTipPercentage(tipPercentage);
+            tipRecord.setTimestamp(new Date());
 
-            String strTip = String.format(getString(R.string.global_message),tip);
-            fragmentListener.action(strTip);
+            String strTip = String.format(getString(R.string.global_message),tipRecord.getTip());
+            fragmentListener.addToList(tipRecord);
             txtTip.setVisibility(View.VISIBLE);
             txtTip.setText(strTip);
         }
@@ -108,6 +114,10 @@ public class MainActivity extends AppCompatActivity {
     public void handleClickDecrease(){
         hideKeyBorad();
         handleTipChange(-TIP_STEP_CHANGE);
+    }
+    @OnClick(R.id.btnClear)
+    public void handleClickClear(){
+        fragmentListener.clearList();
     }
 
     private void handleTipChange(int change) {
